@@ -52,6 +52,27 @@ function computerPlay () {
    }
 }   */
 
+
+function rps (p) {
+    let compSelection = computerPlay();
+    console.log("cpu:" + compSelection);
+    let result = game(p, compSelection);
+    console.log(result);
+    if (result === undefined){
+        //update to say tie,
+        console.log("tie")
+    }
+    else if (result === true) {
+        //update player score by 1. Change score to player wins
+        console.log("player wiin");
+    }
+
+    else if (result === false) {
+        //update opponent score by 1. Change score to opponent wins
+        console.log("player lose");
+    }
+}
+
 function game (p, c) {
     if (
     (p === 'rock' && c === 'scissors') ||
@@ -68,4 +89,19 @@ function game (p, c) {
     else return undefined;
 }
 
-rps();
+const playerInput = document.querySelectorAll('.pButton');
+console.log(playerInput);
+
+playerInput.forEach(playerInput => playerInput.addEventListener('click', (e) => {
+    console.log(e.target.alt);
+    rps(e.target.alt);
+    //function here on click ? to send input into game logic?
+}));
+
+
+
+
+//on click, check class? for selection. use pull the class name into game logic function to compare against ai choice
+//update player and comp selection to show what they picked, and score div to who one. update score count
+//need an event listner to watch the score counters. Once one score hits 5, pop up window to show winner and ask to redo
+// if redo, reset status of game ui?
