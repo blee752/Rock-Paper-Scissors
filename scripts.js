@@ -13,7 +13,7 @@ function computerPlay () {
             break;
  }}
 
-function rps () {
+/* function rps () {
    let winner = false;
    let pScore = 0;
     let cScore = 0; 
@@ -50,7 +50,7 @@ function rps () {
            console.log("cSCore: " + cScore);
        }
    }
-}  
+}   */
 
 function game (p, c) {
     if (
