@@ -105,18 +105,47 @@ function updateScore (player) {
         //update cpu score +1
     }
 
-    if (playerScore === 5 || compScore === 5) {
+    /* if (playerScore === 5 || compScore === 5) {
         restartgame();
 
-    }
-    /* if (playerScore === 5) { // stub for now, just reset if 5 for now while i finish this
-        //pop up window 
+    } */
+    if (playerScore === 5) { // stub for now, just reset if 5 for now while i finish this
+        let modal = document.querySelector('.modal');
+        let close = document.querySelector('.no');
+        let reset = document.querySelector('.yes');
+        let winner = document.querySelector('.modal-info p');
+        winner.innerHTML = "You have has won the game!";
+        modal.style.display = 'block';
+
+        close.onclick = () => {
+            modal.style.display = 'none';
+        };
+
+
+        reset.onclick = () => {
+            restartgame();
+            modal.style.display = 'none';
+        };
     }
 
     else if (compScore === 5) {
-        //pop up window 
+        let modal = document.querySelector('.modal');
+        let close = document.querySelector('.no');
+        let reset = document.querySelector('.yes');
+        let winner = document.querySelector('.modal-info p');
+        winner.innerHTML = "Opponent has won the game!";
+        modal.style.display = 'block';
+
+        close.onclick = () => {
+            modal.style.display = 'none';
+        };
+
+        reset.onclick = () => {
+            restartgame();
+            modal.style.display = 'none';
+        };
     }
- */
+
     //add a check if score is 5, if 5 popup window to say win or lose, do you want to restart?
     //then call the restart game function
 }
