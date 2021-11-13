@@ -53,24 +53,83 @@ function computerPlay () {
 }   */
 
 
+let playerScore = 0;
+let compScore = 0;
+
 function rps (p) {
     let compSelection = computerPlay();
+    const winner = document.querySelector('.results h2');
+    updateSelection(p, compSelection);
     console.log("cpu:" + compSelection);
     let result = game(p, compSelection);
     console.log(result);
     if (result === undefined){
         //update to say tie,
         console.log("tie")
+        winner.innerHTML = "Tie!"
     }
     else if (result === true) {
         //update player score by 1. Change score to player wins
         console.log("player wiin");
+        playerScore++;
+        updateScore(true);
+        winner.innerHTML = "Player wins this round"
     }
 
     else if (result === false) {
         //update opponent score by 1. Change score to opponent wins
         console.log("player lose");
+        compScore++;
+        updateScore(false);
+        winner.innerHTML = "Opponent wins this round"
     }
+}
+
+function updateSelection (p, c) {
+    const pSelection = document.querySelector('.player-selection');
+    const cSelection = document.querySelector('.comp-selection');
+    pSelection.innerHTML = "Player choice: " + p;
+    cSelection.innerHTML = 'Computer Choice: ' + c;
+}
+
+
+function updateScore (player) { 
+    if (player) {
+        const score = document.querySelector('.player-Score');
+        score.innerHTML = "Player: " + playerScore;
+        //update player score +1
+    }
+    else {
+        const score = document.querySelector('.cpu-Score');
+        score.innerHTML = "Opponent: " + compScore;
+        //update cpu score +1
+    }
+
+    if (playerScore === 5 || compScore === 5) {
+        restartgame();
+
+    }
+    /* if (playerScore === 5) { // stub for now, just reset if 5 for now while i finish this
+        //pop up window 
+    }
+
+    else if (compScore === 5) {
+        //pop up window 
+    }
+ */
+    //add a check if score is 5, if 5 popup window to say win or lose, do you want to restart?
+    //then call the restart game function
+}
+
+function restartgame () {
+    playerScore = 0;
+    compScore = 0;
+
+     score = document.querySelector('.player-Score');
+    score.innerHTML = "Player: " + playerScore;
+
+     score = document.querySelector('.cpu-Score');
+    score.innerHTML = "Opponent: " + compScore;
 }
 
 function game (p, c) {
@@ -104,4 +163,5 @@ playerInput.forEach(playerInput => playerInput.addEventListener('click', (e) => 
 //on click, check class? for selection. use pull the class name into game logic function to compare against ai choice
 //update player and comp selection to show what they picked, and score div to who one. update score count
 //need an event listner to watch the score counters. Once one score hits 5, pop up window to show winner and ask to redo
+    //^ above is not possible i believe? Instead, have some global variables that are updated and monitored on game score update
 // if redo, reset status of game ui?
