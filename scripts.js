@@ -114,7 +114,7 @@ function updateScore (player) {
         let close = document.querySelector('.no');
         let reset = document.querySelector('.yes');
         let winner = document.querySelector('.modal-info p');
-        winner.innerHTML = "You have has won the game!";
+        winner.innerHTML = "You have has won the game! Do you want to play again?";
         modal.style.display = 'block';
 
         close.onclick = () => {
@@ -133,7 +133,7 @@ function updateScore (player) {
         let close = document.querySelector('.no');
         let reset = document.querySelector('.yes');
         let winner = document.querySelector('.modal-info p');
-        winner.innerHTML = "Opponent has won the game!";
+        winner.innerHTML = "Opponent has won the game! Do you want to play again?";
         modal.style.display = 'block';
 
         close.onclick = () => {
